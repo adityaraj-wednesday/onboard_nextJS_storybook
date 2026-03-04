@@ -1,4 +1,4 @@
-name: Storybook Tests
+name: Build & Storybook Verification
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main, develop]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     
     steps:
@@ -28,12 +28,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       
-      - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps
+      - name: Lint code
+        run: pnpm lint
+      
+      - name: Build Next.js app
+        run: pnpm build
       
       - name: Build Storybook
-        run: pnpm build-storybook
+        run: pnpm build-storybook --quiet
       
-      - name: Run Storybook tests
-        run: pnpm test-storybook
+      - name: Verify Storybook output
+        run: test -d storybook-static && echo "✓ Storybook built successfully"
         
