@@ -1,18 +1,21 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { twMerge } from "tailwind-merge"
 
-const avatar = cva(["inline-flex", "items-center", "justify-center", "rounded-full", "overflow-hidden", "bg-gray-200"], {
-  variants: {
-    size: {
-      sm: ["h-8", "w-8", "text-xs"],
-      md: ["h-10", "w-10", "text-sm"],
-      lg: ["h-14", "w-14", "text-lg"],
+const avatar = cva(
+  ["inline-flex", "items-center", "justify-center", "rounded-full", "overflow-hidden", "bg-gray-200"],
+  {
+    variants: {
+      size: {
+        sm: ["h-8", "w-8", "text-xs"],
+        md: ["h-10", "w-10", "text-sm"],
+        lg: ["h-14", "w-14", "text-lg"],
+      },
     },
-  },
-  defaultVariants: {
-    size: "md",
-  },
-})
+    defaultVariants: {
+      size: "md",
+    },
+  }
+)
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof avatar> {
   src?: string

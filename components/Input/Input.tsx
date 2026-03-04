@@ -33,7 +33,9 @@ const input = cva(
   }
 )
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">, VariantProps<typeof input> {}
+export interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
+    VariantProps<typeof input> {}
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, inputSize, ...props }, ref) => {
   return <input ref={ref} className={twMerge(input({ inputSize, className }))} {...props} />

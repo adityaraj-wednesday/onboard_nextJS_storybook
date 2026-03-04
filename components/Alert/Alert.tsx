@@ -23,7 +23,7 @@ export function Alert({ className, intent, title, children, ...props }: AlertPro
   return (
     <div role="alert" className={twMerge(alert({ intent, className }))} {...props}>
       {title && <p className="mb-1 font-semibold">{title}</p>}
-      <p>{children}</p>
+      {children}
     </div>
   )
 }
