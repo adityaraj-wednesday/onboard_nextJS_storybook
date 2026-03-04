@@ -1,8 +1,9 @@
 import { cva, type VariantProps } from "class-variance-authority"
+import Image from "next/image"
 import { twMerge } from "tailwind-merge"
 
 const avatar = cva(
-  ["inline-flex", "items-center", "justify-center", "rounded-full", "overflow-hidden", "bg-gray-200"],
+  ["relative", "inline-flex", "items-center", "justify-center", "rounded-full", "overflow-hidden", "bg-gray-200"],
   {
     variants: {
       size: {
@@ -27,7 +28,7 @@ export function Avatar({ className, size, src, alt, fallback, ...props }: Avatar
   return (
     <div className={twMerge(avatar({ size, className }))} {...props}>
       {src ? (
-        <img src={src} alt={alt || ""} className="h-full w-full object-cover" />
+        <Image src={src} alt={alt || ""} fill className="object-cover" />
       ) : (
         <span className="font-medium text-gray-600">{fallback || "?"}</span>
       )}
